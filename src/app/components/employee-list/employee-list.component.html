@@ -1,1 +1,30 @@
-<mat-slide-toggle></mat-slide-toggle>
+<div class="employee-container text-center">
+  <h1 class="display-4 mb-4">Employee List</h1>
+  <p class="lead mb-4">A modern and responsive list of all employees.</p>
+
+  <div class="table-responsive">
+    <table class="table table-hover table-striped">
+      <thead>
+        <tr>
+          <th>Employee ID</th>
+          <th>Name</th>
+          <th>Position</th>
+          <th>Salary</th>
+          <th>Department</th>
+          <th>Role</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let employee of employees">
+          <td>{{ employee.employeeID }}</td>
+          <td>{{ employee.name }}</td>
+          <td>{{ employee.position }}</td>
+          <td>{{ employee.salary }}</td>
+          <td>{{ employee.department.departmentName }}</td>
+          <td>{{ employee.role.roleName }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+

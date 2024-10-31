@@ -1,0 +1,86 @@
+/* Navbar Styling */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgba(78, 84, 200, 0.8); /* Semi-transparent background */
+  backdrop-filter: blur(8px); /* Blurry effect */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 1rem 0;
+  z-index: 1000;
+}
+
+.navbar-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Keeps title on the left and links on the right */
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.navbar-brand {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #ffffff;
+  text-decoration: none;
+  margin-right: auto; /* Ensures it stays on the left */
+}
+
+.navbar-links {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.navbar-links a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.navbar-links a:hover {
+  color: #ffd700;
+}
+
+/* Ensures the main content starts below the navbar */
+.main-content {
+  /* display: flex; */
+  width: 100%;
+  padding-top: 5rem; /* Adjust based on navbar height */
+  margin: 0;
+}
+
+/* .flex-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.flex-item {
+  display: flex;
+  margin: 2rem 1rem;
+} */
+
+/* Flex-container styling to stretch across full width */
+.flex-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around; /* Center elements with space around */
+  width: 100%;
+  margin: 0 auto;
+}
+
+.flex-item {
+  flex: 1 1 300px; /* Makes items responsive */
+  margin: 1rem;
+  max-width: 100%; /* Ensures item doesn't exceed container width */
+}
+
+title {
+  display: flex;
+  align-items: center;
+}

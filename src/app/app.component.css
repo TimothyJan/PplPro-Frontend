@@ -1,0 +1,15 @@
+
+:host {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Ensures the app covers the full viewport height */
+  /* background: linear-gradient(135deg, #4e54c8, #8f94fb); */
+  background: linear-gradient(135deg, #7b7bf2, #4e54c8);
+  color: #ffffff;
+}
+
+/* Ensures that main content grows to fill the space below the navbar */
+.main-content {
+  flex: 1;
+  width: 100%;
+}
