@@ -45,25 +45,25 @@
     </div>
 
     <div class="mb-3">
-      <label for="department" class="form-label">Department</label>
-      <input
-        type="text"
-        id="department"
-        class="form-control"
-        formControlName="department"
-        placeholder="Enter department"
-      />
+      <label for="departmentID" class="form-label">Department</label>
+      <select id="departmentID" class="form-control" formControlName="departmentID">
+        <option value="" disabled>Select a department</option>
+        <option *ngFor="let department of departments" [value]="department.departmentID">{{ department.departmentName }}</option>
+      </select>
+      <div *ngIf="employeeForm.get('departmentID')!.touched && employeeForm.get('departmentID')!.invalid" class="text-danger">
+        Department selection is required.
+      </div>
     </div>
 
-    <div class="mb-3">
-      <label for="role" class="form-label">Role</label>
-      <input
-        type="text"
-        id="role"
-        class="form-control"
-        formControlName="role"
-        placeholder="Enter role"
-      />
+    <div class="mb-3" *ngIf="employeeForm.get('departmentID')!.value">
+      <label for="roleID" class="form-label">Role</label>
+      <select id="roleID" class="form-control" formControlName="roleID">
+        <option value="" disabled>Select a role</option>
+        <option *ngFor="let role of roles" [value]="role.roleID">{{ role.roleName }}</option>
+      </select>
+      <div *ngIf="employeeForm.get('roleID')!.touched && employeeForm.get('roleID')!.invalid" class="text-danger">
+        Role selection is required.
+      </div>
     </div>
 
     <button type="submit" class="btn btn-primary w-100 mt-3" [disabled]="employeeForm.invalid">Add Employee</button>
