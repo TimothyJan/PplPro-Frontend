@@ -24,7 +24,7 @@ export class DepartmentCreateComponent {
 
   onSubmit(): void {
     if (this.departmentForm.valid) {
-      console.log('Form Submitted:', this.departmentForm.value);
+      // console.log('Form Submitted:', this.departmentForm.value);
       this._departmentService.addDepartment(this.departmentForm.value);
       this.departmentForm.reset();
     }

@@ -7,56 +7,16 @@ import { Role } from '../models/role.model';
 export class RoleService {
 
   roles: Role[] = [
-    {
-      "roleID": 1,
-      "roleName": "Accountant",
-      "departmentID": 1
-    },
-    {
-      "roleID": 2,
-      "roleName": "Financial Analyst",
-      "departmentID": 1
-    },
-    {
-      "roleID": 3,
-      "roleName": "Finance Manager",
-      "departmentID": 1
-    },
-    {
-      "roleID": 4,
-      "roleName": "HR Assistant",
-      "departmentID": 2
-    },
-    {
-      "roleID": 5,
-      "roleName": "HR Specialist",
-      "departmentID": 2
-    },
-    {
-      "roleID": 6,
-      "roleName": "HR Director",
-      "departmentID": 2
-    },
-    {
-      "roleID": 7,
-      "roleName": "Software Engineer",
-      "departmentID": 3
-    },
-    {
-      "roleID": 8,
-      "roleName": "Front-End Developer",
-      "departmentID": 3
-    },
-    {
-      "roleID": 9,
-      "roleName": "Back-End Developer",
-      "departmentID": 3
-    },
-    {
-      "roleID": 10,
-      "roleName": "Full-Stack Developer",
-      "departmentID": 3
-    }
+    new Role(0, "Accountant", 0),
+    new Role(1, "Financial Analyst", 0),
+    new Role(2, "Finance Manager", 0),
+    new Role(3, "HR Assistant", 1),
+    new Role(4, "HR Specialist", 1),
+    new Role(5, "HR Director", 1),
+    new Role(6, "Software Engineer", 2),
+    new Role(7, "Front-End Developer", 2),
+    new Role(8, "Back-End Developer", 2),
+    new Role(9, "Full-Stack Developer", 2),
   ];
 
   constructor() { }
@@ -89,8 +49,9 @@ export class RoleService {
 
   /** Post new Role */
   addRole(role: Role): void {
-    let newRole = new Role(role);
+    let newRole = new Role(Number(this.roles.length), role.roleName, role.departmentID);
     this.roles.push(newRole);
+    // console.log(this.roles);
   }
 
   /** Update existing Role based on id */

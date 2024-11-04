@@ -6,7 +6,7 @@
     <div class="mb-3">
       <label for="departmentID" class="form-label">Department</label>
       <select id="departmentID" class="form-control" formControlName="departmentID">
-        <option value="" disabled>Select a department</option>
+        <option value=null disabled>Select a department</option>
         <option *ngFor="let department of departments" [value]="department.departmentID">{{ department.departmentName }}</option>
       </select>
       <div *ngIf="roleForm.get('departmentID')!.touched && roleForm.get('departmentID')!.invalid" class="text-danger">

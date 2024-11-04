@@ -7,18 +7,9 @@ import { Department } from '../models/department.model';
 export class DepartmentService {
 
   departments: Department[] = [
-    {
-      "departmentID": 1,
-      "departmentName": "Finance"
-    },
-    {
-      "departmentID": 2,
-      "departmentName": "Human Resources"
-    },
-    {
-      "departmentID": 3,
-      "departmentName": "Information Technology"
-    }
+    new Department(0, "Finance"),
+    new Department(1, "Human Resources"),
+    new Department(2, "Information Technology")
   ];
 
   constructor() { }
@@ -40,8 +31,9 @@ export class DepartmentService {
 
   /** Post new Department */
   addDepartment(department: Department): void {
-    let newDepartment = new Department(department);
+    let newDepartment = new Department(Number(this.departments.length), department.departmentName);
     this.departments.push(newDepartment);
+    // console.log(this.departments);
   }
 
   /** Update existing Department based on id */

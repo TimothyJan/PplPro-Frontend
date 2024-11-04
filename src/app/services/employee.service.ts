@@ -8,38 +8,10 @@ import { Employee } from '../models/employee.model';
 export class EmployeeService {
 
   employees: Employee[] = [
-    {
-      "employeeID": 1,
-      "name": "Alice Johnson",
-      "position": "Accountant",
-      "salary": 60000,
-      "departmentID": 1,
-      "roleID": 1
-    },
-    {
-      "employeeID": 2,
-      "name": "Bob Smith",
-      "position": "Financial Analyst",
-      "salary": 70000,
-      "departmentID": 1,
-      "roleID": 2
-    },
-    {
-      "employeeID": 3,
-      "name": "Catherine Green",
-      "position": "HR Specialist",
-      "salary": 65000,
-      "departmentID": 2,
-      "roleID": 5
-    },
-    {
-      "employeeID": 4,
-      "name": "David Brown",
-      "position": "Software Engineer",
-      "salary": 90000,
-      "departmentID": 3,
-      "roleID": 7
-    }
+    new Employee(0, "Alice Johnson", "Accountant", 60000, 0, 0),
+    new Employee(1, "Bob Smith", "Financial Analyst", 70000, 0, 1),
+    new Employee(2, "Catherine Green", "HR Specialist", 65000, 1, 4),
+    new Employee(3, "David Brown", "Software Engineer", 90000, 2, 6),
   ];
 
   constructor() { }
@@ -61,8 +33,9 @@ export class EmployeeService {
 
   /** Post new Employee */
   addEmployee(employee: Employee): void {
-    let newEmployee = new Employee(employee);
+    let newEmployee = new Employee(Number(this.employees.length), employee.name, employee.position, employee.salary, employee.departmentID, employee.roleID);
     this.employees.push(newEmployee);
+    // console.log(this.employees);
   }
 
   /** Update existing Employee based on id */

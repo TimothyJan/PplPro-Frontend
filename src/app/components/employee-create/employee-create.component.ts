@@ -28,8 +28,8 @@ export class EmployeeCreateComponent implements OnInit{
     name: new FormControl("", [Validators.required, Validators.minLength(2), Validators.maxLength(100)]),
     position: new FormControl("", [Validators.required, Validators.maxLength(50)]),
     salary: new FormControl(0,  Validators.min(0)),
-    departmentID: new FormControl("", Validators.required),
-    roleID: new FormControl("", Validators.required)
+    departmentID: new FormControl(null, Validators.required),
+    roleID: new FormControl(null, Validators.required)
   });
 
   constructor(
@@ -64,8 +64,13 @@ export class EmployeeCreateComponent implements OnInit{
 
   onSubmit(): void {
     if (this.employeeForm.valid) {
-      console.log('Form Submitted:', this.employeeForm.value);
-      this._employeeService.addEmployee(this.employeeForm.value);
+      const formValue = {
+        ...this.employeeForm.value,
+        departmentID: Number(this.employeeForm.value.departmentID),
+        roleID: Number(this.employeeForm.value.roleID),
+      }
+      // console.log('Form Submitted:', formValue);
+      this._employeeService.addEmployee(formValue);
       this.employeeForm.reset();
     }
   }

@@ -23,7 +23,7 @@ export class RoleCreateComponent implements OnInit{
 
   roleForm: FormGroup = new FormGroup({
     roleName: new FormControl("", [Validators.required, Validators.minLength(2), Validators.maxLength(50)]),
-    departmentID: new FormControl("", [Validators.required])
+    departmentID: new FormControl(null, Validators.required)
   });
 
   constructor(
@@ -42,9 +42,14 @@ export class RoleCreateComponent implements OnInit{
 
   onSubmit(): void {
     if (this.roleForm.valid) {
-      console.log('Form Submitted:', this.roleForm.value);
-      this._roleService.addRole(this.roleForm.value);
+      const formValue = {
+        ...this.roleForm.value,
+        departmentID: Number(this.roleForm.value.departmentID)
+      };
+      // console.log('Form Submitted:', formValue);
+      this._roleService.addRole(formValue);
       this.roleForm.reset();
     }
   }
+
 }

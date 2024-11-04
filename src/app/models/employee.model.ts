@@ -6,7 +6,12 @@ export class Employee {
   departmentID: number = 0;
   roleID: number = 0;
 
-  constructor(init?: Partial<Employee>) {
-    Object.assign(this, init);
+  constructor(employeeID: number, name: string, position: string, salary: number, departmentID: number, roleID: number) {
+    this.employeeID = employeeID;
+    this.name = name;
+    this.position = position;
+    this.salary = salary;
+    this.departmentID = departmentID;
+    this.roleID = roleID;
   }
 }
