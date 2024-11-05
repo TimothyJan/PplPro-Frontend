@@ -39,9 +39,9 @@ export class DepartmentService {
   }
 
   /** Update existing Department based on id */
-  updateDepartment(id: number, department: Department): void {
+  updateDepartment(department: Department): void {
     for(let i=0; i<this.departments.length; i++) {
-      if(this.departments[i].departmentID == id) {
+      if(this.departments[i].departmentID == department.departmentID) {
         this.departments[i] = department;
       }
     }

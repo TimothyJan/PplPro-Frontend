@@ -5,6 +5,8 @@ import { EmployeeCreateComponent } from '../employee-create/employee-create.comp
 import { FooterComponent } from '../footer/footer.component';
 import { DepartmentCreateComponent } from "../department-create/department-create.component";
 import { RoleCreateComponent } from "../role-create/role-create.component";
+import { DepartmentListComponent } from '../department-list/department-list.component';
+import { RoleListComponent } from "../role-list/role-list.component";
 
 @Component({
   selector: 'app-navbar',
@@ -14,7 +16,9 @@ import { RoleCreateComponent } from "../role-create/role-create.component";
     EmployeeCreateComponent,
     FooterComponent,
     DepartmentCreateComponent,
-    RoleCreateComponent
+    RoleCreateComponent,
+    DepartmentListComponent,
+    RoleListComponent
 ],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css'

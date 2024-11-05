@@ -57,9 +57,9 @@ export class RoleService {
   }
 
   /** Update existing Role based on id */
-  updateRole(id: number, role: Role): void {
+  updateRole(role: Role): void {
     for(let i=0; i<this.roles.length; i++) {
-      if(this.roles[i].roleID == id) {
+      if(this.roles[i].roleID == role.roleID) {
         this.roles[i] = role;
       }
     }

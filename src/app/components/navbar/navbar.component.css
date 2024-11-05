@@ -13,7 +13,7 @@
 .navbar-container {
   display: flex;
   align-items: center;
-  justify-content: space-between; /* Keeps title on the left and links on the right */
+  justify-content: space-between;
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 2rem;
@@ -24,31 +24,12 @@
   font-weight: bold;
   color: #ffffff;
   text-decoration: none;
-  margin-right: auto; /* Ensures it stays on the left */
-}
-
-.navbar-links {
-  list-style: none;
-  display: flex;
-  gap: 1.5rem;
-}
-
-.navbar-links a {
-  color: #ffffff;
-  text-decoration: none;
-  font-size: 1rem;
-  transition: color 0.3s ease;
-}
-
-.navbar-links a:hover {
-  color: #ffd700;
+  margin-right: auto;
 }
 
 /* Ensures the main content starts below the navbar */
 .main-content {
-  /* display: flex; */
-  width: 100%;
-  padding-top: 5rem; /* Adjust based on navbar height */
+  padding-top: 5rem;
   margin: 0;
 }
 
@@ -57,41 +38,32 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: center; /* Center elements with space around */
-  width: 100%;
-  margin: 0 auto;
+  justify-content: center;
 }
 
+/* Flex items: fill width on mobile and split on larger screens */
 .flex-item {
-  flex: 1 1 300px; /* Makes items responsive */
   margin: 1rem;
-  max-width: 100%; /* Ensures item doesn't exceed container width */
+}
+
+@media (max-width: 768px) {
+  .flex-item {
+    flex: 1 1 100%; /* Full width on mobile screens */
+  }
 }
 
 /* Ensure app-employee-list takes the full width on larger screens */
-app-employee-list {
+app-employee-list,
+app-department-list,
+app-role-list {
   flex: 1 1 auto; /* Allow to grow and shrink */
   min-width: 300px; /* Minimum width for smaller devices */
   width: 100%; /* Take full width on mobile */
 }
 
-/* Employee List Component Styles */
-.table {
-  width: 100%; /* Ensure table takes full width */
-}
-
-.employee-container {
-  width: 100%; /* Ensure the container also takes full width */
-  overflow-x: auto; /* Allows for horizontal scrolling on smaller screens */
-}
-
+/* Additional Media Queries */
 @media (min-width: 768px) {
   .flex-item {
-    margin: 2rem; /* Increase margin on larger screens */
+    margin: 2rem;
   }
-}
-
-title {
-  display: flex;
-  align-items: center;
 }

@@ -39,18 +39,22 @@ export class EmployeeListComponent implements OnInit {
     this.roles = this._roleService.getRoles();
   }
 
+  /** Load all Employees */
   loadEmployees(): void {
     this.employees = this._employeeService.getEmployees();
   }
 
+  /** Get Department name from DepartmentID */
   getDepartmentName(departmentID: number): string | undefined {
     return this._departmentService.getDepartment(departmentID)?.departmentName;
   }
 
+  /** Get Role name from RoleID */
   getRoleName(roleID: number): string | undefined {
     return this._roleService.getRole(roleID)?.roleName;
   }
 
+  /** Enter Edit mode for editting Employee list */
   enterEditMode(employeeId: number): void {
     this.editModeEmployeeId = employeeId;
     const employee = this.employees.find(emp => emp.employeeID === employeeId);
@@ -60,6 +64,7 @@ export class EmployeeListComponent implements OnInit {
     }
   }
 
+  /** Load associated Roles when Department selection is changed  */
   onDepartmentChange(departmentID: number): void {
     this.filteredRoles = this._roleService.getRolesFromDepartmentID(departmentID);
     const employee = this.employees.find(emp => emp.employeeID === this.editModeEmployeeId);
@@ -68,6 +73,7 @@ export class EmployeeListComponent implements OnInit {
     }
   }
 
+  /** Update Employee and leave Edit mode */
   saveChanges(employee: Employee): void {
     if (employee.roleID !== this.rolePlaceholderID) {
       this._employeeService.updateEmployee(employee);
@@ -75,6 +81,7 @@ export class EmployeeListComponent implements OnInit {
     this.editModeEmployeeId = null;
   }
 
+  /** Delete Employee */
   onDelete(employeeID: number): void {
     const confirmDelete = confirm('Are you sure you want to delete this employee?');
     if (confirmDelete) {

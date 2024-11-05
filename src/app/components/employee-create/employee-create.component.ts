@@ -45,7 +45,7 @@ export class EmployeeCreateComponent implements OnInit{
     this.departmentSelectionChange();
   }
 
-  /** Department change updates the roles array to the selected Department roles  */
+  /** Department change updates the roles array to the selected Department Roles  */
   departmentSelectionChange(): void {
     this.employeeForm.get('departmentID')!.valueChanges.subscribe(departmentID => {
       if (departmentID) {
@@ -57,7 +57,7 @@ export class EmployeeCreateComponent implements OnInit{
     });
   }
 
-  /** roles array is updated to selected departmentID Department roles */
+  /** Roles array is updated to selected departmentID Department roles */
   getRolesFromDepartmentID(departmentID: number): void {
     this.roles = this._roleService.getRolesFromDepartmentID(departmentID);
   }
