@@ -6,6 +6,8 @@ import { Department } from '../models/department.model';
 })
 export class DepartmentService {
 
+  departmentID: number = 3;
+
   departments: Department[] = [
     new Department(0, "Finance"),
     new Department(1, "Human Resources"),
@@ -31,7 +33,7 @@ export class DepartmentService {
 
   /** Post new Department */
   addDepartment(department: Department): void {
-    let newDepartment = new Department(Number(this.departments.length), department.departmentName);
+    let newDepartment = new Department(this.departmentID++, department.departmentName);
     this.departments.push(newDepartment);
     // console.log(this.departments);
   }

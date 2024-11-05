@@ -52,24 +52,12 @@
   margin: 0;
 }
 
-/* .flex-container {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.flex-item {
-  display: flex;
-  margin: 2rem 1rem;
-} */
-
 /* Flex-container styling to stretch across full width */
 .flex-container {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-around; /* Center elements with space around */
+  justify-content: center; /* Center elements with space around */
   width: 100%;
   margin: 0 auto;
 }
@@ -78,6 +66,29 @@
   flex: 1 1 300px; /* Makes items responsive */
   margin: 1rem;
   max-width: 100%; /* Ensures item doesn't exceed container width */
+}
+
+/* Ensure app-employee-list takes the full width on larger screens */
+app-employee-list {
+  flex: 1 1 auto; /* Allow to grow and shrink */
+  min-width: 300px; /* Minimum width for smaller devices */
+  width: 100%; /* Take full width on mobile */
+}
+
+/* Employee List Component Styles */
+.table {
+  width: 100%; /* Ensure table takes full width */
+}
+
+.employee-container {
+  width: 100%; /* Ensure the container also takes full width */
+  overflow-x: auto; /* Allows for horizontal scrolling on smaller screens */
+}
+
+@media (min-width: 768px) {
+  .flex-item {
+    margin: 2rem; /* Increase margin on larger screens */
+  }
 }
 
 title {

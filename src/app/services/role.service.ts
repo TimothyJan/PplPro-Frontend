@@ -6,6 +6,8 @@ import { Role } from '../models/role.model';
 })
 export class RoleService {
 
+  roleID: number = 10;
+
   roles: Role[] = [
     new Role(0, "Accountant", 0),
     new Role(1, "Financial Analyst", 0),
@@ -49,7 +51,7 @@ export class RoleService {
 
   /** Post new Role */
   addRole(role: Role): void {
-    let newRole = new Role(Number(this.roles.length), role.roleName, role.departmentID);
+    let newRole = new Role(this.roleID++, role.roleName, role.departmentID);
     this.roles.push(newRole);
     // console.log(this.roles);
   }

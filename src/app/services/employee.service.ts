@@ -7,6 +7,8 @@ import { Employee } from '../models/employee.model';
 })
 export class EmployeeService {
 
+  employeeID:number = 4;
+
   employees: Employee[] = [
     new Employee(0, "Alice Johnson", "Accountant", 60000, 0, 0),
     new Employee(1, "Bob Smith", "Financial Analyst", 70000, 0, 1),
@@ -33,15 +35,15 @@ export class EmployeeService {
 
   /** Post new Employee */
   addEmployee(employee: Employee): void {
-    let newEmployee = new Employee(Number(this.employees.length), employee.name, employee.position, employee.salary, employee.departmentID, employee.roleID);
+    let newEmployee = new Employee(this.employeeID++, employee.name, employee.position, employee.salary, employee.departmentID, employee.roleID);
     this.employees.push(newEmployee);
     // console.log(this.employees);
   }
 
   /** Update existing Employee based on id */
-  updateEmployee(id: number, employee: Employee): void {
+  updateEmployee(employee: Employee): void {
     for(let i=0; i<this.employees.length; i++) {
-      if(this.employees[i].employeeID == id) {
+      if(this.employees[i].employeeID == employee.employeeID) {
         this.employees[i] = employee;
       }
     }
