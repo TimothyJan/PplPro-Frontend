@@ -1,10 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Department } from '../models/department.model';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DepartmentService {
+
+  private departmentsChangedSource = new Subject<void>();  // Emit events when department is added
+  departmentsChanged$ = this.departmentsChangedSource.asObservable();
 
   departmentID: number = 3;
 
@@ -54,6 +58,11 @@ export class DepartmentService {
         this.departments.splice(i, 1);
       }
     }
+  }
+
+  /** Emit events for departments update */
+  notifyDepartmentsChanged(): void {
+    this.departmentsChangedSource.next();
   }
 
 }

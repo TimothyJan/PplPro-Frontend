@@ -49,6 +49,7 @@ export class RoleCreateComponent implements OnInit{
       // console.log('Form Submitted:', formValue);
       this._roleService.addRole(formValue);
       this.roleForm.reset();
+      this._roleService.notifyRolesChanged();
     }
   }
 

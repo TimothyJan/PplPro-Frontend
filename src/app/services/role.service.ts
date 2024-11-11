@@ -1,10 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Role } from '../models/role.model';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RoleService {
+  private rolesChangedSource = new Subject<void>();  // Emit events when role is added
+  rolesChanged$ = this.rolesChangedSource.asObservable();
 
   roleID: number = 10;
 
@@ -74,4 +77,8 @@ export class RoleService {
     }
   }
 
+  /** Emit events for roles update */
+  notifyRolesChanged(): void {
+    this.rolesChangedSource.next();
+  }
 }

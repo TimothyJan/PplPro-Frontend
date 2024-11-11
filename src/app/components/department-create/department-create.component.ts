@@ -27,6 +27,7 @@ export class DepartmentCreateComponent {
       // console.log('Form Submitted:', this.departmentForm.value);
       this._departmentService.addDepartment(this.departmentForm.value);
       this.departmentForm.reset();
+      this._departmentService.notifyDepartmentsChanged();
     }
   }
 }

@@ -1,11 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Employee } from '../models/employee.model';
+import { Subject } from 'rxjs';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class EmployeeService {
+  private employeesChangedSource = new Subject<void>(); //Emit events when employee is added
+  employeesChanged$ = this.employeesChangedSource.asObservable();
 
   employeeID:number = 4;
 
@@ -58,4 +61,8 @@ export class EmployeeService {
     }
   }
 
+  /** Emit events for employees update */
+  notifyEmployeesChanged(): void {
+    this.employeesChangedSource.next();
+  }
 }

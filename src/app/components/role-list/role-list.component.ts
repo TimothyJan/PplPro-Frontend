@@ -3,6 +3,8 @@ import { FormsModule } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { RoleService } from '../../services/role.service';
 import { Role } from '../../models/role.model';
+import { DepartmentService } from '../../services/department.service';
+import { Department } from '../../models/department.model';
 
 @Component({
   selector: 'app-role-list',
@@ -16,17 +18,37 @@ import { Role } from '../../models/role.model';
 })
 export class RoleListComponent implements OnInit{
   roles: Role[] = [];
+  departments: Department[] = [];
   editModeRoleId: number | null = null;
+  isLoading: boolean = false;
 
-  constructor(private _roleService: RoleService) {}
+  constructor(
+    private _departmentService: DepartmentService,
+    private _roleService: RoleService
+  ) {}
 
   ngOnInit(): void {
+    this.loadDepartments();
     this.loadRoles();
+  }
+
+  loadDepartments(): void {
+    this.isLoading = true;
+    this.departments = this._departmentService.getDepartments();
+    this.isLoading = false;
   }
 
   /** Load all roles */
   loadRoles(): void {
+    this.isLoading = true;
     this.roles = this._roleService.getRoles();
+    this.isLoading = false;
+  }
+
+  /** Get Department name from DepartmentID */
+  getDepartmentName(departmentID: number): string | undefined {
+    const department = this.departments.find(dep => dep.departmentID == departmentID);
+    return department ? department.departmentName : undefined;
   }
 
   /** Enter Edit mode for editting role list */

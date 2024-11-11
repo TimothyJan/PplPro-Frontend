@@ -72,6 +72,7 @@ export class EmployeeCreateComponent implements OnInit{
       // console.log('Form Submitted:', formValue);
       this._employeeService.addEmployee(formValue);
       this.employeeForm.reset();
+      this._employeeService.notifyEmployeesChanged();
     }
   }
 }
